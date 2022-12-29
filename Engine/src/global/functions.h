@@ -5,5 +5,6 @@ namespace Engine
 	{
 		void initGLFW();
 		void initGLAD();
+		void setUpGL();
 	}
 }
