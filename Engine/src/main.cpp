@@ -1,11 +1,11 @@
 #include <iostream>
 #include <glad/glad.h>
 #include <vendor/include/GLFW/glfw3.h>
+#include "window/window.h"
+#include "global/global.h"
 
-void framebuffer_size_callback(GLFWwindow* window, int width, int height)
-{
-	glViewport(0, 0, width, height);
-}
+
+using namespace Engine;
 int main(int argc, char** argv)
 {
 	std::cout << "Hello Game Engine!\n";
@@ -16,19 +16,13 @@ int main(int argc, char** argv)
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	glfwWindowHint(GLFW_SAMPLES, 32);
 
+	Window window = Window("Engine");
+	Global::window = &window;
+	window.init();
+	
+	
 
-	GLFWwindow* window = glfwCreateWindow(800, 640, "Oak Game Engine", NULL, NULL);
-
-	if (window == NULL)
-	{
-		std::cout << "Failed to create GLFW window" << std::endl;
-		glfwTerminate();
-	}
-
-	glfwMakeContextCurrent(window);
-	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
-
-	glfwSwapInterval(1);
+	
 
 
 
@@ -41,17 +35,20 @@ int main(int argc, char** argv)
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 
-	glfwMaximizeWindow(window);
+	
 
-	while (!glfwWindowShouldClose(window))
+
+	while (!window.shouldClose())
 	{
 		glfwPollEvents();
 
-		if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+		if (glfwGetKey((window), GLFW_KEY_ESCAPE) == GLFW_PRESS)
 		{
-			glfwSetWindowShouldClose(window, true);
+			window.close();
 		}
 
-		glfwSwapBuffers(window);
+		window.swapBuffers();
 	}
+
+	//delete Global::window;
 }
