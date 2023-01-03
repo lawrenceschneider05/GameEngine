@@ -40,11 +40,13 @@
 #define KEY_2 35
 #define KEY_3 36
 #define KEY_4 37
-#define KEY_6 38
-#define KEY_7 39
-#define KEY_8 40
-#define KEY_9 41
-#define KEY_0 42
+#define KEY_5 38
+#define KEY_6 39
+#define KEY_7 40
+#define KEY_8 41
+#define KEY_9 42
+#define KEY_0 43
+#define KEY_ENTER 44
 
 namespace Engine
 {
@@ -60,7 +62,7 @@ namespace Engine
 
 	private:
 
-		bool keysDown[42] = {};
+		bool keysDown[44] = {};
 
 		std::unordered_map<int, int> keyMap = { {GLFW_KEY_A, KEY_A},
 												{GLFW_KEY_B, KEY_B},
@@ -105,6 +107,7 @@ namespace Engine
 												{GLFW_KEY_8, KEY_8},
 												{GLFW_KEY_9, KEY_9},
 												{GLFW_KEY_0, KEY_0},
+												{GLFW_KEY_ENTER, KEY_ENTER},
 		};
 	};
 }
