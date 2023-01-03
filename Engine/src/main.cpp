@@ -78,11 +78,6 @@ int main(int argc, char** argv)
 		{
 			window.close();
 		}
-		if (input.isLeftMousePressed())
-		{
-			window.close();
-		}
-		std::cout << input.getMousePos().x << "\n";
 		window.swapBuffers();
 	}
 }
