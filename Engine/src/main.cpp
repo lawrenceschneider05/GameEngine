@@ -20,6 +20,35 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 	}
 }
 
+void cursor_position_callback(GLFWwindow* window, double xpos, double ypos)
+{
+	Global::input->mouseMoved(xpos, ypos);
+}
+
+void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
+{
+	if (button == GLFW_MOUSE_BUTTON_LEFT)
+	{
+		if (action == GLFW_PRESS)
+		{
+			Global::input->leftMousePressed();
+		}
+		else {
+			Global::input->leftMouseReleased();
+		}
+	}
+	if (button == GLFW_MOUSE_BUTTON_RIGHT)
+	{
+		if (action == GLFW_PRESS)
+		{
+			Global::input->rightMousePressed();
+		}
+		else {
+			Global::input->rightMouseReleased();
+		}
+	}
+}
+
 int main(int argc, char** argv)
 {
 	std::cout << "Hello Game Engine!\n";
@@ -37,6 +66,8 @@ int main(int argc, char** argv)
 	Global::setUpGL();
 	
 	glfwSetKeyCallback(window, key_callback);
+	glfwSetCursorPosCallback(window, cursor_position_callback);
+	glfwSetMouseButtonCallback(window, mouse_button_callback);
 
 	while (!window.shouldClose())
 	{
@@ -47,6 +78,11 @@ int main(int argc, char** argv)
 		{
 			window.close();
 		}
+		if (input.isLeftMousePressed())
+		{
+			window.close();
+		}
+		std::cout << input.getMousePos().x << "\n";
 		window.swapBuffers();
 	}
 }

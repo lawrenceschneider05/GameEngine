@@ -2,6 +2,7 @@
 #include <src/types/types.h>
 #include <unordered_map>
 #include "GLFW/glfw3.h"
+#include "glm/glm.hpp"
 
 #define KEY_A 1
 #define KEY_B 2
@@ -60,9 +61,55 @@ namespace Engine
 		void keyReleased(i32 glfwKey);
 		bool keyDown(i32 key);
 
+		inline glm::vec2 getMousePos()
+		{
+			return mousePos;
+		}
+
+		inline void mouseMoved(double x, double y)
+		{
+			mousePos.x = x;
+			mousePos.y = y;
+		}
+
+		inline bool isLeftMousePressed()
+		{
+			return leftMouseDown;
+		}
+
+		inline void leftMousePressed()
+		{
+			leftMouseDown = true;
+		}
+		inline void leftMouseReleased()
+		{
+			leftMouseDown = false;
+		}
+
+		inline bool isRightMousePressed()
+		{
+			return rightMouseDown;
+		}
+
+		inline void rightMousePressed()
+		{
+			rightMouseDown = true;
+		}
+		inline void rightMouseReleased()
+		{
+			rightMouseDown = false;
+		}
+
 	private:
 
 		bool keysDown[44] = {};
+
+		double mousePosX = 0, mousePosY = 0;
+
+		bool leftMouseDown = false;
+		bool rightMouseDown = false;
+
+		glm::vec2 mousePos = {0,0};
 
 		std::unordered_map<int, int> keyMap = { {GLFW_KEY_A, KEY_A},
 												{GLFW_KEY_B, KEY_B},
