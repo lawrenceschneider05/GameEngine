@@ -1,5 +1,4 @@
 #pragma once
-#include <src/types/types.h>
 #include <unordered_map>
 #include "GLFW/glfw3.h"
 #include "glm/glm.hpp"
@@ -57,9 +56,9 @@ namespace Engine
 		InputManager();
 		~InputManager();
 
-		void keyPressed(i32 glfwKey);
-		void keyReleased(i32 glfwKey);
-		bool keyDown(i32 key);
+		void keyPressed(int glfwKey);
+		void keyReleased(int glfwKey);
+		bool keyDown(int key);
 
 		inline glm::vec2 getMousePos()
 		{

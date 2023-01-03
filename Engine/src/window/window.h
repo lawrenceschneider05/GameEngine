@@ -1,7 +1,6 @@
 #pragma once
 #include <GLFW/glfw3.h>
 #include <string>
-#include <src/types/types.h>
 
 namespace Engine
 {
@@ -26,7 +25,7 @@ namespace Engine
 			glfwSwapBuffers(window);
 		}
 
-		void clear(f64 r, f64 g, f64 b, f64 a)
+		void clear(double r, double g, double b, double a)
 		{
 			glClearColor(r, g, b, a);
 			glClear(GL_COLOR_BUFFER_BIT);

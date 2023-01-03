@@ -12,17 +12,17 @@ namespace Engine
 
 	}
 
-	bool InputManager::keyDown(i32 key)
+	bool InputManager::keyDown(int key)
 	{
 		return keysDown[key];
 	}
 
-	void InputManager::keyPressed(i32 glfwKey)
+	void InputManager::keyPressed(int glfwKey)
 	{
 		keysDown[keyMap[glfwKey]] = true;
 	}
 
-	void InputManager::keyReleased(i32 glfwKey)
+	void InputManager::keyReleased(int glfwKey)
 	{
 		keysDown[keyMap[glfwKey]] = false;
 	}

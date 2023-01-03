@@ -32,9 +32,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\types\types.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\window\window.h">
       <Filter>Header Files</Filter>
     </ClInclude>
