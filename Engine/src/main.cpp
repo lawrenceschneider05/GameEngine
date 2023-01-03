@@ -10,14 +10,6 @@ using namespace Engine;
 
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
-	if (key == GLFW_KEY_ESCAPE)
-	{
-		if (action == GLFW_PRESS)
-		{
-			Global::window->close();
-		}
-	}
-
 	if (action == GLFW_PRESS)
 	{
 		Global::input->keyPressed(key);
@@ -51,7 +43,7 @@ int main(int argc, char** argv)
 		glfwPollEvents();
 
 		window.clear(0.2125f, 0.4356f, 0.85f, 1.f);
-		if (input.keyDown(KEY_X))
+		if (input.keyDown(KEY_ESCAPE))
 		{
 			window.close();
 		}

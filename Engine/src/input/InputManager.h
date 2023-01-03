@@ -29,6 +29,22 @@
 #define KEY_X 24
 #define KEY_Y 25
 #define KEY_Z 26
+#define KEY_ESCAPE 27
+#define KEY_LEFT_CTRL 28
+#define KEY_RIGHT_CTRL 29
+#define KEY_LEFT_SHIFT 30
+#define KEY_RIGHT_SHIFT 31
+#define KEY_LEFT_ALT 32
+#define KEY_RIGHT_ALT 33
+#define KEY_1 34
+#define KEY_2 35
+#define KEY_3 36
+#define KEY_4 37
+#define KEY_6 38
+#define KEY_7 39
+#define KEY_8 40
+#define KEY_9 41
+#define KEY_0 42
 
 namespace Engine
 {
@@ -44,11 +60,8 @@ namespace Engine
 
 	private:
 
-		bool keysDown[26] = {};
-		// A = 0
-		// B = 1
-		// C = 2
-		// ...
+		bool keysDown[42] = {};
+
 		std::unordered_map<int, int> keyMap = { {GLFW_KEY_A, KEY_A},
 												{GLFW_KEY_B, KEY_B},
 												{GLFW_KEY_C, KEY_C},
@@ -75,6 +88,23 @@ namespace Engine
 												{GLFW_KEY_X, KEY_X},
 												{GLFW_KEY_Y, KEY_Y},
 												{GLFW_KEY_Z, KEY_Z},
+												{GLFW_KEY_ESCAPE, KEY_ESCAPE},
+												{GLFW_KEY_LEFT_CONTROL, KEY_LEFT_CTRL},
+												{GLFW_KEY_RIGHT_CONTROL, KEY_RIGHT_CTRL},
+												{GLFW_KEY_LEFT_SHIFT, KEY_LEFT_SHIFT},
+												{GLFW_KEY_RIGHT_SHIFT, KEY_RIGHT_SHIFT},
+												{GLFW_KEY_LEFT_ALT, KEY_LEFT_ALT},
+												{GLFW_KEY_RIGHT_ALT, KEY_RIGHT_ALT},
+												{GLFW_KEY_1, KEY_1},
+												{GLFW_KEY_2, KEY_2},
+												{GLFW_KEY_3, KEY_3},
+												{GLFW_KEY_4, KEY_4},
+												{GLFW_KEY_5, KEY_5},
+												{GLFW_KEY_6, KEY_6},
+												{GLFW_KEY_7, KEY_7},
+												{GLFW_KEY_8, KEY_8},
+												{GLFW_KEY_9, KEY_9},
+												{GLFW_KEY_0, KEY_0},
 		};
 	};
 }
