@@ -1,6 +1,6 @@
 #include <iostream>
-#include "window/window.h"
 #include "global/instances.h"
+
 #include "global/functions.h"
 #include <map>
 #include <unordered_map>
@@ -51,6 +51,7 @@ void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
 
 int main(int argc, char** argv)
 {
+	float a = 0;
 	std::cout << "Hello Game Engine!\n";
 
 	Global::initGLFW();
@@ -69,15 +70,34 @@ int main(int argc, char** argv)
 	glfwSetCursorPosCallback(window, cursor_position_callback);
 	glfwSetMouseButtonCallback(window, mouse_button_callback);
 
+	Renderer renderer = Renderer();
+	Global::renderer = &renderer;
+	renderer.init();
+	
 	while (!window.shouldClose())
 	{
 		glfwPollEvents();
 
-		window.clear(0.2125f, 0.4356f, 0.85f, 1.f);
 		if (input.keyDown(KEY_ESCAPE))
 		{
 			window.close();
 		}
+
+
+		window.clear(0.2125f, 0.4356f, 0.85f, 1.f);
+		renderer.beginFrame();
+
+		renderer.drawQuad(0, 0, 0.5f, 0.5f, 1.0f, 1.0f, 0.5f, a);
+		if (input.keyDown(KEY_W))
+		{
+			a += 0.01f;
+		}
+		if (input.keyDown(KEY_S))
+		{
+			a -= 0.01f;
+		}
+
+		renderer.endFrame();
 		window.swapBuffers();
 	}
 }
