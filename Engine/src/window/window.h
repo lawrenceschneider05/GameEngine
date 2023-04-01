@@ -1,6 +1,7 @@
 #pragma once
 #include <GLFW/glfw3.h>
 #include <string>
+#include "glm/glm.hpp"
 
 namespace Engine
 {
@@ -39,6 +40,14 @@ namespace Engine
 		bool shouldClose()
 		{
 			return glfwWindowShouldClose(window);
+		}
+
+
+		glm::vec2 getWindowSize() {
+			int width, height;
+			glfwGetWindowSize(window, &width, &height);
+			glm::vec2 vec = { width, height };
+			return vec;
 		}
 	private:
 		GLFWwindow* window;

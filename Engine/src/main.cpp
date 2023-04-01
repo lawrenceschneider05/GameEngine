@@ -83,11 +83,13 @@ int main(int argc, char** argv)
 			window.close();
 		}
 
-
 		window.clear(0.2125f, 0.4356f, 0.85f, 1.f);
 		renderer.beginFrame();
 
-		renderer.drawQuad(0, 0, 0.5f, 0.5f, 1.0f, 1.0f, 0.5f, a);
+		renderer.drawQuad(2 * (input.getMousePos().x / window.getWindowSize().x) - 1, -(2 * (input.getMousePos().y / window.getWindowSize().y) - 1), 0.5f, 0.5f, 1.0f, 1.0f, 0.5f, a);
+		//std::cout << -(2 * (input.getMousePos().y / window.getWindowSize().y) - 1) << "\n";
+		renderer.drawQuad(-1, 0, 0.5f, 0.5f, 1.0f, 1.0f, a, a);
+		
 		if (input.keyDown(KEY_W))
 		{
 			a += 0.01f;
@@ -95,6 +97,10 @@ int main(int argc, char** argv)
 		if (input.keyDown(KEY_S))
 		{
 			a -= 0.01f;
+		}
+		if (input.keyDown(KEY_ESCAPE))
+		{
+			window.close();
 		}
 
 		renderer.endFrame();
