@@ -73,7 +73,20 @@ int main(int argc, char** argv)
 	Renderer renderer = Renderer();
 	Global::renderer = &renderer;
 	renderer.init();
+
+
+	Camera camera(Global::window->getWindowSize().x, Global::window->getWindowSize().y, glm::vec3(0.0f, 0.0f, 2.0f));
+	camera.Position.z = 10;
+	Global::camera = &camera;
+	//camera.init(window.getWindowSize().x, window.getWindowSize().y);
 	
+	//GLint pLocation = renderer.getBatchShader().getUniformLocation("camMatrix");
+	//std::cout << pLocation;
+	//glm::mat4 cameraMatrix = camera.getCameraMatrix();
+	//std::cout << cameraMatrix[1][1];
+
+	//glUniformMatrix4fv(pLocation, 1, GL_FALSE, &(cameraMatrix[0][0]));
+
 	while (!window.shouldClose())
 	{
 		glfwPollEvents();
@@ -84,12 +97,16 @@ int main(int argc, char** argv)
 		}
 
 		window.clear(0.2125f, 0.4356f, 0.85f, 1.f);
+		camera.Inputs(window);
+		camera.Matrix(45.0f, 0.1f, 1000.0f, renderer.getBatchShader(), "camMatrix");
 		renderer.beginFrame();
 
-		renderer.drawQuad(2 * (input.getMousePos().x / window.getWindowSize().x) - 1, -(2 * (input.getMousePos().y / window.getWindowSize().y) - 1), 0.5f, 0.5f, 1.0f, 1.0f, 0.5f, a);
+
+		//renderer.drawQuad(2 * (input.getMousePos().x / 800) - 1, -(2 * (input.getMousePos().y / 640) - 1), 0.5f, 0.5f, 1.0f, 1.0f, 0.5f, a);
 		//std::cout << -(2 * (input.getMousePos().y / window.getWindowSize().y) - 1) << "\n";
-		renderer.drawQuad(-1, 0, 0.5f, 0.5f, 1.0f, 1.0f, a, a);
-		
+		renderer.drawQuad(-10, -10, 200, 200, 1.0f, 1.0f, 1.0f, 1.0f);
+		renderer.drawQuad(a, 0, 100, 100, 1, 1, 1, 1);
+
 		if (input.keyDown(KEY_W))
 		{
 			a += 0.01f;
@@ -102,7 +119,8 @@ int main(int argc, char** argv)
 		{
 			window.close();
 		}
-
+		
+		glfwGetWindowSize(window, &camera.width, &camera.height);
 		renderer.endFrame();
 		window.swapBuffers();
 	}

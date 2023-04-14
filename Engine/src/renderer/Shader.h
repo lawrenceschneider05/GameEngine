@@ -99,6 +99,11 @@ public:
         glUniform2f(glGetUniformLocation(ID, name), value[0], value[1]);
     }
 
+    GLint getUniformLocation(const char* name)
+    {
+        return glGetUniformLocation(ID, name);
+    }
+
 private:
     // utility function for checking shader compilation/linking errors.
     // ------------------------------------------------------------------------

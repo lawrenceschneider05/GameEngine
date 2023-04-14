@@ -30,7 +30,7 @@ namespace Engine
 		glfwMakeContextCurrent(window);
 		glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 		glfwSwapInterval(1);
-		glfwMaximizeWindow(window);
+		//glfwMaximizeWindow(window);
 		return true;
 	}
 }

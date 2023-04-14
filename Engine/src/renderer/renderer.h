@@ -34,6 +34,11 @@ namespace Engine
 		void beginFrame();
 		void endFrame();
 		void drawQuad(float x, float y, float w, float h, float r, float g, float b, float a);
+
+		Shader& getBatchShader()
+		{
+			return batchShader;
+		}
 	private:
 		std::array<Vertex, RENDERER_MAX_VERTEX_COUNT> vertices;
 		std::array<unsigned int, RENDERER_MAX_INDEX_COUNT> indices;

@@ -144,6 +144,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\camera\camera.cpp" />
     <ClCompile Include="src\glad\glad.c" />
     <ClCompile Include="src\global\functions.cpp" />
     <ClCompile Include="src\input\InputManager.cpp" />
@@ -152,6 +153,7 @@
     <ClCompile Include="src\window\window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\camera\camera.h" />
     <ClInclude Include="src\global\functions.h" />
     <ClInclude Include="src\global\instances.h" />
     <ClInclude Include="src\input\InputManager.h" />
