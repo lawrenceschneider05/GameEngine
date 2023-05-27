@@ -153,6 +153,7 @@
     <ClCompile Include="src\window\window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\camera\c.h" />
     <ClInclude Include="src\camera\camera.h" />
     <ClInclude Include="src\global\functions.h" />
     <ClInclude Include="src\global\instances.h" />

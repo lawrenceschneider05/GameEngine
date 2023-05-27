@@ -37,5 +37,7 @@ public:
 	void Matrix(float FOVdeg, float nearPlane, float farPlane, Shader& shader, const char* uniform);
 	// Handles camera inputs
 	void Inputs(GLFWwindow* window);
+
+	glm::vec2 screenToWorldCords(glm::vec2 screenCords);
 };
 #endif

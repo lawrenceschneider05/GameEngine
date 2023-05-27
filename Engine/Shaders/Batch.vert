@@ -4,12 +4,15 @@ layout (location = 1) in vec4 aColor;
 
 out vec4 ourColor;
 
-uniform mat4 camMatrix;
+//uniform mat4 camMatrix;
+uniform mat4 P;
 
 void main()
 {
-    gl_Position = camMatrix * vec4(aPos, 1.0);
+    //gl_Position = camMatrix * vec4(aPos, 1.0);
     //gl_Position = vec4(aPos, 1.0);
+
+    gl_Position = (P * vec4(aPos.x, aPos.y, 0.0f, 1.0f));
 
     ourColor = aColor;
 }
