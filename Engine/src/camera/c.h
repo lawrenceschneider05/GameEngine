@@ -22,7 +22,6 @@ public:
 
 		glm::vec3 sc(scale, scale, 0.0f);
 		cameraMatrix = glm::scale(cameraMatrix, sc);
-
 	}
 	
 	void init(int w, int h)

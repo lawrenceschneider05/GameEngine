@@ -49,6 +49,17 @@ namespace Engine
 			glm::vec2 vec = { width, height };
 			return vec;
 		}
+
+		std::string getTitle()
+		{
+			return title;
+		}
+
+		void setTitle(std::string title)
+		{
+			this->title = title;
+			glfwSetWindowTitle(window, title.c_str());
+		}
 	private:
 		GLFWwindow* window;
 		std::string title;

@@ -89,9 +89,14 @@ int main(int argc, char** argv)
 	//std::cout << cameraMatrix[1][1];
 
 	//glUniformMatrix4fv(pLocation, 1, GL_FALSE, &(cameraMatrix[0][0]));
-
+	double frameStart = 0;
+	double length = 0;
+	double FPS = 60;
+	//glfwSwapInterval(1);
 	while (!window.shouldClose())
 	{
+
+		frameStart = glfwGetTime();
 		glfwPollEvents();
 
 		if (input.keyDown(KEY_ESCAPE))
@@ -99,38 +104,39 @@ int main(int argc, char** argv)
 			window.close();
 		}
 		camera.update();
-		
-
-		window.clear(0.2125f, 0.4356f, 0.85f, 1.f);
-		//camera.Inputs(window);
-		//camera.Matrix(45.0f, 0.1f, 1000.0f, renderer.getBatchShader(), "camMatrix");
-		renderer.beginFrame();
-		GLint loc = renderer.getBatchShader().getUniformLocation("P");
-		glm::mat4 camMatrix = camera.getOrthoMatrix();
-		glUniformMatrix4fv(loc, 1, GL_FALSE, &(camMatrix[0][0]));
-
-		renderer.drawQuad(input.getMousePos().x, window.getWindowSize().y - input.getMousePos().y, 100, 100, 1, 1, 1, 1);
-		//renderer.drawQuad(10*(input.getMousePos().x / window.getWindowSize().x), -(input.getMousePos().y / window.getWindowSize().y), 10, 10, 1, 1, 1, 1);
-		
-		//renderer.drawQuad(camera.screenToWorldCords(input.getMousePos()).x, camera.screenToWorldCords(input.getMousePos()).y, 10, 10, 1, 1, 1, 1);
-
-		std::cout << input.getMousePos().x << "  " << input.getMousePos().y << "\n";
-		if (input.keyDown(KEY_W))
-		{
-			a += 0.01f;
-		}
-		if (input.keyDown(KEY_S))
-		{
-			a -= 0.01f;
-		}
 		if (input.keyDown(KEY_ESCAPE))
 		{
 			window.close();
 		}
-		
-		//glfwGetWindowSize(window, &camera.width, &camera.height);
+		if (input.keyDown(KEY_ESCAPE))
+		{
+			camera.setScale(camera.getScale() + 1);
+		}
+		int w, h;
+		glfwGetWindowSize(window, &w, &h);
+		camera.init(w, h);
+
+		if (length < 1.0 / FPS)
+		{
+			window.clear(0.2125f, 0.4356f, 0.85f, 1.f);
+
+			renderer.beginFrame();
+			GLint loc = renderer.getBatchShader().getUniformLocation("P");
+			glm::mat4 camMatrix = camera.getOrthoMatrix();
+			glUniformMatrix4fv(loc, 1, GL_FALSE, &(camMatrix[0][0]));
+
+			renderer.drawQuad(input.getMousePos().x - camera.getPosition().x, window.getWindowSize().y - input.getMousePos().y + camera.getPosition().y, 100, 100, 1, 1, 1, 1);
+		}
 
 		renderer.endFrame();
 		window.swapBuffers();
+
+		length = glfwGetTime() - frameStart;
+		while (length < 1.0 / FPS)
+		{
+			length = glfwGetTime() - frameStart;
+		}
+
+		window.setTitle(std::to_string((1.0f / (glfwGetTime() - frameStart))));
 	}
 }
