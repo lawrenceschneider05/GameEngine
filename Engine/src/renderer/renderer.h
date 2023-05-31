@@ -1,6 +1,7 @@
 #pragma once
 #include <src/renderer/Shader.h>
 #include <array>
+#include <src/renderer/colors.h>
 
 #define RENDERER_MAX_QUAD_COUNT 1024
 #define RENDERER_MAX_VERTEX_COUNT RENDERER_MAX_QUAD_COUNT * 4
@@ -34,6 +35,7 @@ namespace Engine
 		void beginFrame();
 		void endFrame();
 		void drawQuad(float x, float y, float w, float h, float r, float g, float b, float a);
+		void drawQuad(float x, float y, float w, float h, Color c);
 
 		Shader& getBatchShader()
 		{

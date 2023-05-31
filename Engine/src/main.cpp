@@ -4,7 +4,7 @@
 #include "global/functions.h"
 #include <map>
 #include <unordered_map>
-#include <src/camera/c.h>
+#include <src/camera/camera.h>
 
 using namespace Engine;
 
@@ -75,23 +75,12 @@ int main(int argc, char** argv)
 	Global::renderer = &renderer;
 	renderer.init();
 
-	C camera;
+	Camera camera;
 	camera.init(window.getWindowSize().x, window.getWindowSize().y);
 
-	//Camera camera(Global::window->getWindowSize().x, Global::window->getWindowSize().y, glm::vec3(0.0f, 0.0f, 2.0f));
-	//camera.Position.z = 10;
-	//Global::camera = &camera;
-	//camera.init(window.getWindowSize().x, window.getWindowSize().y);
-	
-	//GLint pLocation = renderer.getBatchShader().getUniformLocation("camMatrix");
-	//std::cout << pLocation;
-	//glm::mat4 cameraMatrix = camera.getCameraMatrix();
-	//std::cout << cameraMatrix[1][1];
-
-	//glUniformMatrix4fv(pLocation, 1, GL_FALSE, &(cameraMatrix[0][0]));
 	double frameStart = 0;
 	double length = 0;
-	double FPS = 60;
+	double FPS = 30;
 	//glfwSwapInterval(1);
 	while (!window.shouldClose())
 	{
@@ -103,7 +92,7 @@ int main(int argc, char** argv)
 		{
 			window.close();
 		}
-		camera.update();
+		camera.update(input);
 		if (input.keyDown(KEY_ESCAPE))
 		{
 			window.close();
@@ -116,8 +105,6 @@ int main(int argc, char** argv)
 		glfwGetWindowSize(window, &w, &h);
 		camera.init(w, h);
 
-		if (length < 1.0 / FPS)
-		{
 			window.clear(0.2125f, 0.4356f, 0.85f, 1.f);
 
 			renderer.beginFrame();
@@ -125,8 +112,14 @@ int main(int argc, char** argv)
 			glm::mat4 camMatrix = camera.getOrthoMatrix();
 			glUniformMatrix4fv(loc, 1, GL_FALSE, &(camMatrix[0][0]));
 
-			renderer.drawQuad(input.getMousePos().x - camera.getPosition().x, window.getWindowSize().y - input.getMousePos().y + camera.getPosition().y, 100, 100, 1, 1, 1, 1);
-		}
+			for (int y = 0; y < 32; y++)
+			{
+				for (int x = 0; x < 32; x++)
+				{
+					renderer.drawQuad(x * 32, y * 32, 32, 32, (x / 32.0f) * 255.0f, (y / 32.0f) * 255.0f, x * y / 255.0f, 1.0f);
+				}
+			}
+		
 
 		renderer.endFrame();
 		window.swapBuffers();
@@ -136,7 +129,7 @@ int main(int argc, char** argv)
 		{
 			length = glfwGetTime() - frameStart;
 		}
-
+		
 		window.setTitle(std::to_string((1.0f / (glfwGetTime() - frameStart))));
 	}
 }

@@ -1,43 +1,84 @@
-#ifndef CAMERA_CLASS_H
-#define CAMERA_CLASS_H
-
-#include<glad/glad.h>
-#include<GLFW/glfw3.h>
-#include<glm/glm.hpp>
-#include<glm/gtc/matrix_transform.hpp>
-#include<glm/gtc/type_ptr.hpp>
-#include<glm/gtx/rotate_vector.hpp>
-#include<glm/gtx/vector_angle.hpp>
-
-#include "src/renderer/Shader.h"
-
-class Camera
+#pragma once
+#include "glm/glm.hpp"
+#include "glm/gtc/matrix_transform.hpp"
+#include "src/input/InputManager.h"
+namespace Engine
 {
-public:
-	// Stores the main vectors of the camera
-	glm::vec3 Position;
-	glm::vec3 Orientation = glm::vec3(0.0f, 0.0f, -1.0f);
-	glm::vec3 Up = glm::vec3(0.0f, 1.0f, 0.0f);
+	class Camera
+	{
+	public:
+		Camera() : position(0.0f, 0.0f), cameraMatrix(1.0f), scale(1.0f)
+		{
 
-	// Prevents the camera from jumping around when first clicking left click
-	bool firstClick = true;
+		}
 
-	// Stores the width and height of the window
-	int width;
-	int height;
+		~Camera()
+		{
 
-	// Adjust the speed of the camera and it's sensitivity when looking around
-	float speed = 0.1f;
-	float sensitivity = 100.0f;
+		}
 
-	// Camera constructor to set up initial values
-	Camera(int width, int height, glm::vec3 position);
+		void update(InputManager& input)
+		{
+			if (input.keyDown(KEY_W))
+			{
+				position.y += 10;
+			}
+			else if (input.keyDown(KEY_S))
+			{
+				position.y -= 10;
+			}
+			if (input.keyDown(KEY_A))
+			{
+				position.x -= 10;
+			}
+			else if (input.keyDown(KEY_D))
+			{
+				position.x += 10;
+			}
+			glm::vec3 translate(-position.x, -position.y, 0.0f);
+			cameraMatrix = glm::translate(orthoMatrix, translate);
 
-	// Updates and exports the camera matrix to the Vertex Shader
-	void Matrix(float FOVdeg, float nearPlane, float farPlane, Shader& shader, const char* uniform);
-	// Handles camera inputs
-	void Inputs(GLFWwindow* window);
+			glm::vec3 sc(scale, scale, 0.0f);
+			cameraMatrix = glm::scale(cameraMatrix, sc);
+		}
 
-	glm::vec2 screenToWorldCords(glm::vec2 screenCords);
-};
-#endif
+		void init(int w, int h)
+		{
+			width = w;
+			height = h;
+
+			orthoMatrix = glm::ortho(0.0f, (float)width, 0.0f, (float)height);
+		}
+
+		void setPosition(const glm::vec2& newPosition)
+		{
+			position = newPosition;
+		}
+
+		glm::vec2 getPosition()
+		{
+			return position;
+		}
+
+		void setScale(float newScale)
+		{
+			scale = newScale;
+		}
+
+		float getScale()
+		{
+			return scale;
+		}
+
+		glm::mat4 getOrthoMatrix()
+		{
+			return cameraMatrix;
+		}
+	private:
+		int width, height;
+		float scale;
+		glm::vec2 position;
+		glm::mat4 cameraMatrix;
+		glm::mat4 orthoMatrix;
+	};
+}
