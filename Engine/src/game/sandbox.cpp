@@ -3,7 +3,7 @@ namespace Game
 {
 	Sandbox::Sandbox()
 	{
-
+		camera->cameraMove = 1;
 	}
 
 	Sandbox::~Sandbox()
@@ -13,7 +13,7 @@ namespace Game
 
 	void Sandbox::input()
 	{
-		
+
 	}
 
 	void Sandbox::update()
@@ -23,6 +23,7 @@ namespace Game
 
 	void Sandbox::render()
 	{
-		renderer->drawQuad(100, 100, 100, 100, Engine::Colors::RED);
+		renderer->drawQuad(inputManager->getMousePos().x, inputManager->getMousePos().y, 1000, 100, Engine::Colors::RED);
+
 	}
 }

@@ -10,7 +10,7 @@ namespace Engine
 	namespace Global
 	{
 		inline Window* window;
-		inline InputManager* input;
+		inline InputManager* inputManager;
 		inline Renderer* renderer;
 		inline Camera* camera;
 	}

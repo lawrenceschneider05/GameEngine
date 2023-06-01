@@ -4,7 +4,7 @@ namespace Engine
 {
 	App::App()
 	{
-		
+
 	}
 
 	App::~App()
@@ -22,8 +22,8 @@ namespace Engine
 		Global::window = &*window;
 		window->init();
 
-		im = new InputManager();
-		Global::input = &*im;
+		im = new InputManager(window);
+		Global::inputManager = &*im;
 
 		Global::initGLAD();
 		Global::setUpGL();
@@ -34,6 +34,7 @@ namespace Engine
 
 		camera = new Camera();
 		camera->init(window->getWindowSize().x, window->getWindowSize().y);
+		Global::camera = &*camera;
 
 		game = new Game::Sandbox();
 	}
@@ -46,7 +47,7 @@ namespace Engine
 		{
 			window->close();
 		}
-		
+
 		game->input();
 	}
 
@@ -74,7 +75,7 @@ namespace Engine
 		glfwGetWindowSize(*window, &w, &h);
 		camera->init(w, h);
 		camera->update(*im);
-		
+
 		game->update();
 	}
 }

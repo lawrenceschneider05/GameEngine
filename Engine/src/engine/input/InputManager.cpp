@@ -2,9 +2,9 @@
 #include <iostream>
 namespace Engine
 {
-	InputManager::InputManager()
+	InputManager::InputManager(Window* w)
 	{
-
+		window = w;
 	}
 
 	InputManager::~InputManager()

@@ -14,17 +14,17 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 {
 	if (action == GLFW_PRESS)
 	{
-		Global::input->keyPressed(key);
+		Global::inputManager->keyPressed(key);
 	}
 	else if (action == GLFW_RELEASE)
 	{
-		Global::input->keyReleased(key);
+		Global::inputManager->keyReleased(key);
 	}
 }
 
 void cursor_position_callback(GLFWwindow* window, double xpos, double ypos)
 {
-	Global::input->mouseMoved(xpos, ypos);
+	Global::inputManager->mouseMoved(xpos, ypos);
 }
 
 void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
@@ -33,27 +33,27 @@ void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
 	{
 		if (action == GLFW_PRESS)
 		{
-			Global::input->leftMousePressed();
+			Global::inputManager->leftMousePressed();
 		}
 		else {
-			Global::input->leftMouseReleased();
+			Global::inputManager->leftMouseReleased();
 		}
 	}
 	if (button == GLFW_MOUSE_BUTTON_RIGHT)
 	{
 		if (action == GLFW_PRESS)
 		{
-			Global::input->rightMousePressed();
+			Global::inputManager->rightMousePressed();
 		}
 		else {
-			Global::input->rightMouseReleased();
+			Global::inputManager->rightMouseReleased();
 		}
 	}
 }
 
 int main(int argc, char** argv)
 {
-	
+
 
 	float a = 0;
 	std::cout << "Hello Game Engine!\n";
@@ -62,15 +62,15 @@ int main(int argc, char** argv)
 
 	App* app = new App();
 	app->init();
-	
-	
+
+
 	glfwSetKeyCallback(app->getWindow(), key_callback);
 	glfwSetCursorPosCallback(app->getWindow(), cursor_position_callback);
 	glfwSetMouseButtonCallback(app->getWindow(), mouse_button_callback);
 
-	
 
-	
+
+
 
 	double frameStart = 0;
 	double length = 0;
@@ -82,14 +82,14 @@ int main(int argc, char** argv)
 	{
 
 		frameStart = glfwGetTime();
-		
+
 		app->input();
-		
-		
+
+
 
 		app->update();
 
-			
+
 		app->render();
 
 
@@ -98,10 +98,10 @@ int main(int argc, char** argv)
 		{
 			length = glfwGetTime() - frameStart;
 		}
-		
+
 		app->getWindow().setTitle(std::to_string((1.0f / (glfwGetTime() - frameStart))));
 
-		
+
 	}
 	delete app;
 }

@@ -2,6 +2,7 @@
 #include <unordered_map>
 #include "GLFW/glfw3.h"
 #include "glm/glm.hpp"
+#include "window/window.h"
 
 #define KEY_A 1
 #define KEY_B 2
@@ -54,7 +55,7 @@ namespace Engine
 	class InputManager
 	{
 	public:
-		InputManager();
+		InputManager(Window* window);
 		~InputManager();
 
 		void keyPressed(int glfwKey);
@@ -63,7 +64,7 @@ namespace Engine
 
 		inline glm::vec2 getMousePos()
 		{
-			return mousePos;
+			return { mousePos.x, window->getWindowSize().y - mousePos.y };
 		}
 
 		inline void mouseMoved(double x, double y)
@@ -101,7 +102,7 @@ namespace Engine
 		}
 
 	private:
-
+		Window* window;
 		bool keysDown[44] = {};
 
 		double mousePosX = 0, mousePosY = 0;
@@ -109,7 +110,7 @@ namespace Engine
 		bool leftMouseDown = false;
 		bool rightMouseDown = false;
 
-		glm::vec2 mousePos = {0,0};
+		glm::vec2 mousePos = { 0,0 };
 
 		std::unordered_map<int, int> keyMap = { {GLFW_KEY_A, KEY_A},
 												{GLFW_KEY_B, KEY_B},

@@ -7,6 +7,7 @@ namespace Engine
 	class Camera
 	{
 	public:
+		bool cameraMove = true;
 		Camera() : position(0.0f, 0.0f), cameraMatrix(1.0f), scale(1.0f)
 		{
 
@@ -19,36 +20,39 @@ namespace Engine
 
 		void update(InputManager& input)
 		{
-			if (input.keyDown(KEY_W))
+			if (cameraMove)
 			{
-				position.y += 10;
-			}
-			else if (input.keyDown(KEY_S))
-			{
-				position.y -= 10;
-			}
-			if (input.keyDown(KEY_A))
-			{
-				position.x -= 10;
-			}
-			else if (input.keyDown(KEY_D))
-			{
-				position.x += 10;
-			}
-			if (input.keyDown(KEY_SPACE))
-			{
-				
-				scale -= 0.05f;
-				if (scale < 0)
+				if (input.keyDown(KEY_W))
 				{
-					scale = 0;
+					position.y += 10;
 				}
+				else if (input.keyDown(KEY_S))
+				{
+					position.y -= 10;
+				}
+				if (input.keyDown(KEY_A))
+				{
+					position.x -= 10;
+				}
+				else if (input.keyDown(KEY_D))
+				{
+					position.x += 10;
+				}
+				if (input.keyDown(KEY_SPACE))
+				{
 
-			}
-			else if (input.keyDown(KEY_LEFT_SHIFT))
-			{
-				scale += 0.05f;
+					scale -= 0.05f;
+					if (scale < 0)
+					{
+						scale = 0;
+					}
 
+				}
+				else if (input.keyDown(KEY_LEFT_SHIFT))
+				{
+					scale += 0.05f;
+
+				}
 			}
 			glm::vec3 translate(-position.x, -position.y, 0.0f);
 			cameraMatrix = glm::translate(orthoMatrix, translate);
