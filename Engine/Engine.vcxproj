@@ -145,6 +145,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\engine\camera\camera.cpp" />
     <ClCompile Include="src\engine\core\app.cpp" />
     <ClCompile Include="src\engine\glad\glad.c" />
     <ClCompile Include="src\engine\global\functions.cpp" />

@@ -3,7 +3,7 @@ namespace Engine
 {
 	Renderer::Renderer()
 	{
-		vertexCount = 0; 
+		vertexCount = 0;
 		indexCount = 0;
 		VAO = 0;
 		VBO = 0;
@@ -87,28 +87,28 @@ namespace Engine
 	{
 		//Bottom right
 		Vertex v0;
-		v0.Position = { x + w, y - h, 0.f };
+		v0.Position = { x + w, y, 0.f };
 		v0.Color = { r,g,b,a };
 		vertices[vertexCount] = v0;
 		vertexCount++;
 
 		//Top right
 		Vertex v1;
-		v1.Position = { x + w, y, 0.f };
+		v1.Position = { x + w, y + h, 0.f };
 		v1.Color = { r, g, b, a };
 		vertices[vertexCount] = v1;
 		vertexCount++;
 
 		//Top left
 		Vertex v2;
-		v2.Position = { x, y, 0.f };
+		v2.Position = { x, y + h, 0.f };
 		v2.Color = { r, g, b, a };
 		vertices[vertexCount] = v2;
 		vertexCount++;
 
 		//Bottom left
 		Vertex v3;
-		v3.Position = { x, y - h, 0.f };
+		v3.Position = { x, y, 0.f };
 		v3.Color = { r, g, b, a };
 		vertices[vertexCount] = v3;
 		vertexCount++;
@@ -120,28 +120,28 @@ namespace Engine
 	{
 		//Bottom right
 		Vertex v0;
-		v0.Position = { x + w, y - h, 0.f };
+		v0.Position = { x + w, y, 0.f };
 		v0.Color = { color.r,color.g,color.b,1.f };
 		vertices[vertexCount] = v0;
 		vertexCount++;
 
 		//Top right
 		Vertex v1;
-		v1.Position = { x + w, y, 0.f };
+		v1.Position = { x + w, y + h, 0.f };
 		v1.Color = { color.r,color.g,color.b,1.f };
 		vertices[vertexCount] = v1;
 		vertexCount++;
 
 		//Top left
 		Vertex v2;
-		v2.Position = { x, y, 0.f };
+		v2.Position = { x, y + h, 0.f };
 		v2.Color = { color.r,color.g,color.b,1.f };
 		vertices[vertexCount] = v2;
 		vertexCount++;
 
 		//Bottom left
 		Vertex v3;
-		v3.Position = { x, y - h, 0.f };
+		v3.Position = { x, y, 0.f };
 		v3.Color = { color.r,color.g,color.b,1.f };
 		vertices[vertexCount] = v3;
 		vertexCount++;

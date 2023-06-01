@@ -18,6 +18,15 @@ namespace Engine
 
 		}
 
+		glm::vec2 convertScreenToWorldCoordinates(glm::vec2 screenCords)
+		{
+			//screenCords -= glm::vec2(width / 4, height / 4);
+			screenCords += position;
+			screenCords /= scale;
+			
+			return screenCords;
+		}
+
 		void update(InputManager& input)
 		{
 			if (cameraMove)
