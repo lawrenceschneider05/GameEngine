@@ -37,11 +37,18 @@ namespace Engine
 			}
 			if (input.keyDown(KEY_SPACE))
 			{
-				scale += 0.01f;
+				
+				scale -= 0.05f;
+				if (scale < 0)
+				{
+					scale = 0;
+				}
+
 			}
 			else if (input.keyDown(KEY_LEFT_SHIFT))
 			{
-				scale -= 0.01f;
+				scale += 0.05f;
+
 			}
 			glm::vec3 translate(-position.x, -position.y, 0.0f);
 			cameraMatrix = glm::translate(orthoMatrix, translate);
