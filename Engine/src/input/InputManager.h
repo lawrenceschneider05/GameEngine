@@ -47,6 +47,7 @@
 #define KEY_9 42
 #define KEY_0 43
 #define KEY_ENTER 44
+#define KEY_SPACE 45
 
 namespace Engine
 {
@@ -154,6 +155,7 @@ namespace Engine
 												{GLFW_KEY_9, KEY_9},
 												{GLFW_KEY_0, KEY_0},
 												{GLFW_KEY_ENTER, KEY_ENTER},
+												{GLFW_KEY_SPACE, KEY_SPACE}
 		};
 	};
 }
