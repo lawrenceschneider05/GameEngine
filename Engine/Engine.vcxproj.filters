@@ -15,54 +15,60 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\core\main.cpp">
+    <ClCompile Include="src\game\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\glad\glad.c">
+    <ClCompile Include="src\engine\glad\glad.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\window\window.cpp">
+    <ClCompile Include="src\engine\window\window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\global\functions.cpp">
+    <ClCompile Include="src\engine\global\functions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\input\InputManager.cpp">
+    <ClCompile Include="src\engine\input\InputManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\renderer\renderer.cpp">
+    <ClCompile Include="src\engine\renderer\renderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\core\app.cpp">
+    <ClCompile Include="src\engine\core\app.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\sandbox.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\window\window.h">
+    <ClInclude Include="src\engine\window\window.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\global\instances.h">
+    <ClInclude Include="src\engine\global\instances.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\global\functions.h">
+    <ClInclude Include="src\engine\global\functions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\input\InputManager.h">
+    <ClInclude Include="src\engine\input\InputManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\renderer\Shader.h">
+    <ClInclude Include="src\engine\renderer\Shader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\renderer\renderer.h">
+    <ClInclude Include="src\engine\renderer\renderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\camera\camera.h">
+    <ClInclude Include="src\engine\camera\camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\renderer\colors.h">
+    <ClInclude Include="src\engine\renderer\colors.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\core\app.h">
+    <ClInclude Include="src\engine\core\app.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game\sandbox.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,7 +1,7 @@
 #pragma once
-#include <src/renderer/Shader.h>
+#include <renderer/Shader.h>
 #include <array>
-#include <src/renderer/colors.h>
+#include <renderer/colors.h>
 
 #define RENDERER_MAX_QUAD_COUNT 1024
 #define RENDERER_MAX_VERTEX_COUNT RENDERER_MAX_QUAD_COUNT * 4

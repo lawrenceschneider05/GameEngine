@@ -118,7 +118,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)$(ProjectName)\vendor\include\;$(SolutionDir)$(ProjectName)\;$(SolutionDir)$(ProjectName)\src\types\types.h;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)$(ProjectName)\vendor\include\;$(SolutionDir)$(ProjectName)\;$(SolutionDir)$(ProjectName)\src\engine\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -145,24 +145,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\core\app.cpp" />
-    <ClCompile Include="src\glad\glad.c" />
-    <ClCompile Include="src\global\functions.cpp" />
-    <ClCompile Include="src\input\InputManager.cpp" />
-    <ClCompile Include="src\core\main.cpp" />
-    <ClCompile Include="src\renderer\renderer.cpp" />
-    <ClCompile Include="src\window\window.cpp" />
+    <ClCompile Include="src\engine\core\app.cpp" />
+    <ClCompile Include="src\engine\glad\glad.c" />
+    <ClCompile Include="src\engine\global\functions.cpp" />
+    <ClCompile Include="src\engine\input\InputManager.cpp" />
+    <ClCompile Include="src\game\main.cpp" />
+    <ClCompile Include="src\engine\renderer\renderer.cpp" />
+    <ClCompile Include="src\engine\window\window.cpp" />
+    <ClCompile Include="src\game\sandbox.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\camera\camera.h" />
-    <ClInclude Include="src\core\app.h" />
-    <ClInclude Include="src\global\functions.h" />
-    <ClInclude Include="src\global\instances.h" />
-    <ClInclude Include="src\input\InputManager.h" />
-    <ClInclude Include="src\renderer\colors.h" />
-    <ClInclude Include="src\renderer\renderer.h" />
-    <ClInclude Include="src\renderer\Shader.h" />
-    <ClInclude Include="src\window\window.h" />
+    <ClInclude Include="src\engine\camera\camera.h" />
+    <ClInclude Include="src\engine\core\app.h" />
+    <ClInclude Include="src\engine\global\functions.h" />
+    <ClInclude Include="src\engine\global\instances.h" />
+    <ClInclude Include="src\engine\input\InputManager.h" />
+    <ClInclude Include="src\engine\renderer\colors.h" />
+    <ClInclude Include="src\engine\renderer\renderer.h" />
+    <ClInclude Include="src\engine\renderer\Shader.h" />
+    <ClInclude Include="src\engine\window\window.h" />
+    <ClInclude Include="src\game\sandbox.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Shaders\Batch.frag" />

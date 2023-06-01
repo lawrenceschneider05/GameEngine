@@ -1,11 +1,11 @@
 #include <iostream>
-#include "src/global/instances.h"
+#include "global/instances.h"
 
-#include "src/global/functions.h"
+#include "global/functions.h"
 #include <map>
 #include <unordered_map>
-#include <src/camera/camera.h>
-#include <src/core/app.h>
+#include <camera/camera.h>
+#include <core/app.h>
 
 using namespace Engine;
 
@@ -74,6 +74,8 @@ int main(int argc, char** argv)
 
 	double frameStart = 0;
 	double length = 0;
+
+	// 37 currently highest stable fps at fullscreen with no quads :(
 	double FPS = 30;
 	//glfwSwapInterval(1);
 	while (!app->getWindow().shouldClose())
@@ -90,11 +92,6 @@ int main(int argc, char** argv)
 			
 		app->render();
 
-			
-		
-
-		
-		
 
 		length = glfwGetTime() - frameStart;
 		while (length < 1.0 / FPS)

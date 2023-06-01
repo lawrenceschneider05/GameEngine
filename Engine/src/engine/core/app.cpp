@@ -13,6 +13,8 @@ namespace Engine
 		delete im;
 		delete renderer;
 		delete camera;
+
+		delete game;
 	}
 	void App::init()
 	{
@@ -32,6 +34,8 @@ namespace Engine
 
 		camera = new Camera();
 		camera->init(window->getWindowSize().x, window->getWindowSize().y);
+
+		game = new Game::Sandbox();
 	}
 
 	void App::input()
@@ -43,6 +47,7 @@ namespace Engine
 			window->close();
 		}
 		
+		game->input();
 	}
 
 	void App::render()
@@ -55,13 +60,8 @@ namespace Engine
 		glm::mat4 camMatrix = camera->getOrthoMatrix();
 		glUniformMatrix4fv(loc, 1, GL_FALSE, &(camMatrix[0][0]));
 
-		for (int y = 0; y < 32; y++)
-		{
-			for (int x = 0; x < 32; x++)
-			{
-				renderer->drawQuad(x * 32, y * 32, 32, 32, (x / 32.0f) * 255.0f, (y / 32.0f) * 255.0f, x * y / 255.0f, 1.0f);
-			}
-		}
+		game->render();
+
 
 		renderer->endFrame();
 
@@ -74,5 +74,7 @@ namespace Engine
 		glfwGetWindowSize(*window, &w, &h);
 		camera->init(w, h);
 		camera->update(*im);
+		
+		game->update();
 	}
 }

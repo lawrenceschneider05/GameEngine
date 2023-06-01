@@ -1,9 +1,9 @@
 #pragma once
 #include <glad/glad.h>
-#include <src/window/window.h>
-#include <src/input/InputManager.h>
-#include <src/renderer/renderer.h>
-#include <src/camera/camera.h>
+#include <window/window.h>
+#include <input/InputManager.h>
+#include <renderer/renderer.h>
+#include <camera/camera.h>
 
 namespace Engine
 {

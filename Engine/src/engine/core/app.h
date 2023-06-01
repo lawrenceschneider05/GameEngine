@@ -1,6 +1,7 @@
 #pragma once
-#include "src/global/instances.h"
-#include "src/global/functions.h"
+#include "global/instances.h"
+#include "global/functions.h"
+#include <src/game/sandbox.h>
 
 namespace Engine
 {
@@ -37,5 +38,7 @@ namespace Engine
 		InputManager* im;
 		Renderer* renderer;
 		Camera* camera;
+
+		Game::Sandbox* game;
 	};
 }
