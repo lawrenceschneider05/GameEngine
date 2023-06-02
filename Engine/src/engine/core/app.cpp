@@ -69,12 +69,12 @@ namespace Engine
 		window->swapBuffers();
 	}
 
-	void App::update()
+	void App::update(long double dt)
 	{
 		int w, h;
 		glfwGetWindowSize(*window, &w, &h);
 		camera->init(w, h);
-		camera->update(*im);
+		camera->update(*im, dt);
 
 		game->update();
 	}

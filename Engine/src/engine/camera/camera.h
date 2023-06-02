@@ -27,30 +27,30 @@ namespace Engine
 			return screenCords;
 		}
 
-		void update(InputManager& input)
+		void update(InputManager& input, long double dt)
 		{
 			if (cameraMove)
 			{
 				if (input.keyDown(KEY_W))
 				{
-					position.y += 10;
+					position.y += 300 * dt;
 				}
 				else if (input.keyDown(KEY_S))
 				{
-					position.y -= 10;
+					position.y -= 300 * dt;
 				}
 				if (input.keyDown(KEY_A))
 				{
-					position.x -= 10;
+					position.x -= 300 * dt;
 				}
 				else if (input.keyDown(KEY_D))
 				{
-					position.x += 10;
+					position.x += 300 * dt;
 				}
 				if (input.keyDown(KEY_SPACE))
 				{
 
-					scale -= 0.05f;
+					scale -= 5.f * dt;
 					if (scale < 0)
 					{
 						scale = 0;
@@ -59,7 +59,7 @@ namespace Engine
 				}
 				else if (input.keyDown(KEY_LEFT_SHIFT))
 				{
-					scale += 0.05f;
+					scale += 5.f * dt;
 
 				}
 			}

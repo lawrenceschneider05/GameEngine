@@ -17,7 +17,7 @@ namespace Engine
 
 		void render();
 
-		void update();
+		void update(long double dt);
 
 		Window& getWindow()
 		{

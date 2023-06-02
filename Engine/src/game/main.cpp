@@ -73,21 +73,21 @@ int main(int argc, char** argv)
 
 
 
-	double FPS = 500;
+	double FPS = 1000;
 	//glfwSwapInterval(1);
 
 	double lastRender = -FPS;
+	double frameStart = 0;
+	long double dt = 0;
 	while (!app->getWindow().shouldClose())
 	{
-
+		frameStart = glfwGetTime();
 
 		app->input();
 
+		app->update(dt);
 
-
-		app->update();
-
-		if (glfwGetTime() - lastRender > 1 / FPS)
+		if ((glfwGetTime() - lastRender > 1 / FPS))
 		{
 			//std::cout << (glfwGetTime() - lastRender) << "\n";
 			app->getWindow().setTitle(std::to_string((1.0f / (glfwGetTime() - lastRender))));
@@ -99,7 +99,8 @@ int main(int argc, char** argv)
 			
 
 		}
-		
+		dt = glfwGetTime() - frameStart;
+		//std::cout << 1.0f / dt << "\n";
 	}
 	delete app;
 }
