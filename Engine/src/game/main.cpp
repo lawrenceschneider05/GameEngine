@@ -72,16 +72,14 @@ int main(int argc, char** argv)
 
 
 
-	double frameStart = 0;
-	double length = 0;
-
 	// 37 currently highest stable fps at fullscreen with no quads :(
-	double FPS = 30;
+	double FPS = 60;
 	//glfwSwapInterval(1);
+
+	double lastRender = -FPS;
 	while (!app->getWindow().shouldClose())
 	{
 
-		frameStart = glfwGetTime();
 
 		app->input();
 
@@ -89,19 +87,19 @@ int main(int argc, char** argv)
 
 		app->update();
 
-
-		app->render();
-
-
-		length = glfwGetTime() - frameStart;
-		while (length < 1.0 / FPS)
+		if (glfwGetTime() - lastRender > 1 / FPS)
 		{
-			length = glfwGetTime() - frameStart;
+			//std::cout << (glfwGetTime() - lastRender) << "\n";
+			app->getWindow().setTitle(std::to_string((1.0f / (glfwGetTime() - lastRender))));
+			app->render();
+
+			
+			
+			lastRender = glfwGetTime();
+			
+
 		}
-
-		app->getWindow().setTitle(std::to_string((1.0f / (glfwGetTime() - frameStart))));
-
-
+		
 	}
 	delete app;
 }
