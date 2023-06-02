@@ -118,6 +118,10 @@ namespace Engine
 
 	void Renderer::drawQuad(float x, float y, float w, float h, Color color)
 	{
+		if (indexCount + 6 > RENDERER_MAX_INDEX_COUNT)
+		{
+			return;
+		}
 		//Bottom right
 		Vertex v0;
 		v0.Position = { x + w, y, 0.f };
