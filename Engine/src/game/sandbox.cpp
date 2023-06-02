@@ -4,6 +4,7 @@ using namespace std;
 namespace Game
 {
 	vector<glm::vec2> points;
+	
 	Sandbox::Sandbox()
 	{
 		camera->cameraMove = 1;

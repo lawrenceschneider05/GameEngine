@@ -40,5 +40,6 @@ namespace Engine
 		Camera* camera;
 
 		Game::Sandbox* game;
+		
 	};
 }

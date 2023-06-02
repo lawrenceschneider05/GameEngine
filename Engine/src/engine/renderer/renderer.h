@@ -3,7 +3,7 @@
 #include <array>
 #include <renderer/colors.h>
 
-#define RENDERER_MAX_QUAD_COUNT 1024
+#define RENDERER_MAX_QUAD_COUNT 1024 * 1000
 #define RENDERER_MAX_VERTEX_COUNT RENDERER_MAX_QUAD_COUNT * 4
 #define RENDERER_MAX_INDEX_COUNT RENDERER_MAX_QUAD_COUNT * 6
 
@@ -40,6 +40,11 @@ namespace Engine
 		Shader& getBatchShader()
 		{
 			return batchShader;
+		}
+
+		int quadCount()
+		{
+			return indexCount / 6;
 		}
 	private:
 		std::array<Vertex, RENDERER_MAX_VERTEX_COUNT> vertices;

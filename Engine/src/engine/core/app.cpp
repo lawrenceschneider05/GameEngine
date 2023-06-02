@@ -1,4 +1,5 @@
 #include "app.h"
+#include "GLFW/glfw3.h"
 
 namespace Engine
 {
@@ -76,6 +77,7 @@ namespace Engine
 		camera->init(w, h);
 		camera->update(*im, dt);
 
+		window->setTitle(std::to_string(renderer->quadCount()));
 		game->update();
 	}
 }
