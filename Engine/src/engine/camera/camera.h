@@ -50,7 +50,7 @@ namespace Engine
 				if (input.keyDown(KEY_SPACE))
 				{
 
-					scale -= 5.f * dt;
+					scale -= 2.5f * dt;
 					if (scale < 0)
 					{
 						scale = 0;
@@ -59,7 +59,7 @@ namespace Engine
 				}
 				else if (input.keyDown(KEY_LEFT_SHIFT))
 				{
-					scale += 5.f * dt;
+					scale += 2.5f * dt;
 
 				}
 			}

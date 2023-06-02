@@ -3,11 +3,12 @@
 using namespace std;
 namespace Game
 {
-	vector<glm::vec2> points;
+	glm::vec2 player{0,0};
+	bool up = 0, down = 0, left = 0, right = 0;
 	
 	Sandbox::Sandbox()
 	{
-		camera->cameraMove = 1;
+		camera->cameraMove = 0;
 	}
 
 	Sandbox::~Sandbox()
@@ -17,24 +18,72 @@ namespace Game
 
 	void Sandbox::input()
 	{
-		if (inputManager->isLeftMousePressed())
+		if (inputManager->keyDown(KEY_W))
 		{
-			points.push_back(getMousePos());
+			up = true;
+			down = false;
+		}
+		else if (inputManager->keyDown(KEY_S))
+		{
+			down = true;
+			up = false;
+		}
+		else
+		{
+			down = false;
+			up = false;
+		}
+		if (inputManager->keyDown(KEY_A))
+		{
+			left = true;
+			right = false;
+		}
+		else if (inputManager->keyDown(KEY_D))
+		{
+			right = true;
+			left = false;
+		}
+		else
+		{
+			right = false;
+			left = false;
 		}
 	}
 
-	void Sandbox::update()
+	void Sandbox::update(long double dt)
 	{
-
+		if (up)
+		{
+			if (player.y + 150 <= window->getWindowSize().y)
+			{
+				player.y += 500 * dt;
+			}
+		}
+		if (down)
+		{
+			if (player.y >= 0)
+			{
+				player.y -= 500 * dt;
+			}
+		}
+		if (left)
+		{
+			if (player.x >= 0)
+			{
+				player.x -= 500 * dt;
+			}
+		}
+		if (right)
+		{
+			if (player.x + 150 <= window->getWindowSize().x)
+			{
+				player.x += 500 * dt;
+			}
+		}
 	}
 
 	void Sandbox::render()
 	{
-		renderer->drawQuad(getMousePos().x, getMousePos().y, 1000, 100, Engine::Colors::RED);
-		renderer->drawQuad(0, 0, 100, 100, Engine::Colors::BLUE);
-		for (int i = 0; i < points.size(); i++)
-		{
-			renderer->drawQuad(points[i].x, points[i].y, 10, 10, Engine::Colors::BLUE);
-		}
+		renderer->drawQuad(player.x, player.y, 150, 150, Engine::Colors::RED);
 	}
 }

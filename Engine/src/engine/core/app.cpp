@@ -77,7 +77,7 @@ namespace Engine
 		camera->init(w, h);
 		camera->update(*im, dt);
 
-		window->setTitle(std::to_string(renderer->quadCount()));
-		game->update();
+		//window->setTitle(std::to_string(renderer->quadCount()));
+		game->update(dt);
 	}
 }

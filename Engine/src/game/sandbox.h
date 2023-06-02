@@ -11,7 +11,7 @@ namespace Game
 		~Sandbox();
 
 		void input();
-		void update();
+		void update(long double dt);
 		void render();
 	private:
 	};

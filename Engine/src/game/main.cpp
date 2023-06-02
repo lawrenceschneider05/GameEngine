@@ -73,7 +73,7 @@ int main(int argc, char** argv)
 
 
 
-	double FPS = 1000;
+	double FPS = 100;
 	//glfwSwapInterval(1);
 
 	double lastRender = -FPS;
@@ -90,7 +90,7 @@ int main(int argc, char** argv)
 		if ((glfwGetTime() - lastRender > 1 / FPS))
 		{
 			//std::cout << (glfwGetTime() - lastRender) << "\n";
-			//app->getWindow().setTitle(std::to_string((1.0f / (glfwGetTime() - lastRender))));
+			app->getWindow().setTitle(std::to_string((1.0f / (glfwGetTime() - lastRender))));
 			app->render();
 
 			
