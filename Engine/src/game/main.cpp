@@ -72,8 +72,8 @@ int main(int argc, char** argv)
 
 
 
-	// 37 currently highest stable fps at fullscreen with no quads :(
-	double FPS = 60;
+
+	double FPS = 500;
 	//glfwSwapInterval(1);
 
 	double lastRender = -FPS;
