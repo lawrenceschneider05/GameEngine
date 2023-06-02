@@ -23,8 +23,7 @@ namespace Game
 
 	void Sandbox::render()
 	{
-		glm::vec2 cords = camera->convertScreenToWorldCoordinates(inputManager->getMousePos());
-		renderer->drawQuad(cords.x, cords.y, 1000, 100, Engine::Colors::RED);
+		renderer->drawQuad(getMousePos().x, getMousePos().y, 1000, 100, Engine::Colors::RED);
 		renderer->drawQuad(0, 0, 100, 100, Engine::Colors::BLUE);
 
 	}

@@ -1,4 +1,5 @@
 #pragma once
+#include <vendor/include/glm/fwd.hpp>
 namespace Engine
 {
 	namespace Global
@@ -6,5 +7,6 @@ namespace Engine
 		void initGLFW();
 		void initGLAD();
 		void setUpGL();
+		glm::vec2 getMousePos();
 	}
 }

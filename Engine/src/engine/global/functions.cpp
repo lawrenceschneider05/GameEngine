@@ -2,6 +2,8 @@
 #include <glad/glad.h>
 #include <vendor/include/GLFW/glfw3.h>
 #include <iostream>
+#include <vendor/include/glm/fwd.hpp>
+#include "instances.h"
 
 namespace Engine
 {
@@ -28,6 +30,11 @@ namespace Engine
 		{
 			glEnable(GL_BLEND);
 			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		}
+
+		glm::vec2 getMousePos()
+		{
+			return camera->convertScreenToWorldCoordinates(inputManager->getMousePos());
 		}
 	}
 }

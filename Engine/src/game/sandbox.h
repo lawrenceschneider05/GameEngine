@@ -1,5 +1,6 @@
 #pragma once
 #include "global/instances.h"
+#include "global/functions.h"
 using namespace Engine::Global;
 namespace Game
 {
