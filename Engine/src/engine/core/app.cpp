@@ -38,6 +38,7 @@ namespace Engine
 		Global::camera = &*camera;
 
 		game = new Game::Sandbox();
+		glfwSwapInterval(1);
 	}
 
 	void App::input()
@@ -64,7 +65,6 @@ namespace Engine
 
 		game->render();
 
-
 		renderer->endFrame();
 
 		window->swapBuffers();
@@ -76,7 +76,7 @@ namespace Engine
 		glfwGetWindowSize(*window, &w, &h);
 		camera->init(w, h);
 		camera->update(*im, dt);
-
+		
 		//window->setTitle(std::to_string(renderer->quadCount()));
 		game->update(dt);
 	}

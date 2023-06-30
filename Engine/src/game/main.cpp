@@ -1,6 +1,5 @@
 #include <iostream>
 #include "global/instances.h"
-
 #include "global/functions.h"
 #include <map>
 #include <unordered_map>
@@ -73,7 +72,7 @@ int main(int argc, char** argv)
 
 
 
-	double FPS = 100;
+	double FPS = 60;
 	//glfwSwapInterval(1);
 
 	double lastRender = -FPS;

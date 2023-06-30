@@ -49,6 +49,10 @@
 #define KEY_0 43
 #define KEY_ENTER 44
 #define KEY_SPACE 45
+#define KEY_UP 46
+#define KEY_DOWN 47
+#define KEY_LEFT 48
+#define KEY_RIGHT 49
 
 namespace Engine
 {
@@ -156,7 +160,11 @@ namespace Engine
 												{GLFW_KEY_9, KEY_9},
 												{GLFW_KEY_0, KEY_0},
 												{GLFW_KEY_ENTER, KEY_ENTER},
-												{GLFW_KEY_SPACE, KEY_SPACE}
+												{GLFW_KEY_SPACE, KEY_SPACE},
+												{GLFW_KEY_UP, KEY_UP},
+												{GLFW_KEY_DOWN, KEY_DOWN},
+												{GLFW_KEY_LEFT, KEY_LEFT},
+												{GLFW_KEY_RIGHT, KEY_RIGHT},
 		};
 	};
 }

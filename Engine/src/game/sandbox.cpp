@@ -54,7 +54,7 @@ namespace Game
 	{
 		if (up)
 		{
-			if (player.y + 150 <= window->getWindowSize().y)
+			if (player.y + 150 * dt <= window->getWindowSize().y)
 			{
 				player.y += 500 * dt;
 			}
@@ -75,7 +75,7 @@ namespace Game
 		}
 		if (right)
 		{
-			if (player.x + 150 <= window->getWindowSize().x)
+			if (player.x + 150 * dt <= window->getWindowSize().x)
 			{
 				player.x += 500 * dt;
 			}
