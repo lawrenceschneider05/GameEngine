@@ -53,6 +53,7 @@ namespace Engine
 		{
 			window->close();
 		}
+		em->collisions();
 		em->input();
 		game->input();
 	}

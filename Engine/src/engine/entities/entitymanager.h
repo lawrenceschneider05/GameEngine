@@ -30,6 +30,8 @@ namespace Engine
 		void update(long double dt);
 		void render();
 
+		void collisions();
+
 		inline void removeEntity(EntityID id)
 		{
 			try

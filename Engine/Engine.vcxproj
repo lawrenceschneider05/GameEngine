@@ -92,6 +92,7 @@
     <ClCompile Include="src\engine\core\app.cpp" />
     <ClCompile Include="src\engine\entities\entitymanager.cpp" />
     <ClCompile Include="src\engine\entities\player.cpp" />
+    <ClCompile Include="src\engine\entities\wall.cpp" />
     <ClCompile Include="src\engine\glad\glad.c" />
     <ClCompile Include="src\engine\global\functions.cpp" />
     <ClCompile Include="src\engine\input\InputManager.cpp" />
@@ -102,10 +103,16 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\engine\camera\camera.h" />
+    <ClInclude Include="src\engine\collision\Collision.h" />
+    <ClInclude Include="src\engine\collision\CollisionFinder.h" />
+    <ClInclude Include="src\engine\collision\collisionmanager.h" />
+    <ClInclude Include="src\engine\collision\Quad.h" />
     <ClInclude Include="src\engine\core\app.h" />
     <ClInclude Include="src\engine\entities\entitymanager.h" />
+    <ClInclude Include="src\engine\entities\entitytypes.h" />
     <ClInclude Include="src\engine\entities\ientity.h" />
     <ClInclude Include="src\engine\entities\player.h" />
+    <ClInclude Include="src\engine\entities\wall.h" />
     <ClInclude Include="src\engine\global\functions.h" />
     <ClInclude Include="src\engine\global\instances.h" />
     <ClInclude Include="src\engine\input\InputManager.h" />

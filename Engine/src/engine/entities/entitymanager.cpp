@@ -1,4 +1,5 @@
 #include "entitymanager.h"
+#include "collision/collisionmanager.h"
 
 namespace Engine
 {
@@ -40,5 +41,18 @@ namespace Engine
 		{
 			e.second->render();
 		}
+	}
+
+	void EntityManager::collisions()
+	{
+		std::vector<IEntity*> entities{};
+
+		typedef std::map<EntityID, IEntity*> map;
+
+		for (map::const_iterator it = entityMap.begin(); it != entityMap.end(); ++it) {
+			entities.push_back(it->second);
+		}
+
+		CollisionManager::findCollisions(entities);
 	}
 }
