@@ -90,7 +90,8 @@
   <ItemGroup>
     <ClCompile Include="src\engine\camera\camera.cpp" />
     <ClCompile Include="src\engine\core\app.cpp" />
-    <ClCompile Include="src\engine\ecs\entitymanager.cpp" />
+    <ClCompile Include="src\engine\entities\entitymanager.cpp" />
+    <ClCompile Include="src\engine\entities\player.cpp" />
     <ClCompile Include="src\engine\glad\glad.c" />
     <ClCompile Include="src\engine\global\functions.cpp" />
     <ClCompile Include="src\engine\input\InputManager.cpp" />
@@ -102,10 +103,9 @@
   <ItemGroup>
     <ClInclude Include="src\engine\camera\camera.h" />
     <ClInclude Include="src\engine\core\app.h" />
-    <ClInclude Include="src\engine\ecs\componentarray.h" />
-    <ClInclude Include="src\engine\ecs\entity.h" />
-    <ClInclude Include="src\engine\ecs\entitymanager.h" />
-    <ClInclude Include="src\engine\ecs\positionmanager.h" />
+    <ClInclude Include="src\engine\entities\entitymanager.h" />
+    <ClInclude Include="src\engine\entities\ientity.h" />
+    <ClInclude Include="src\engine\entities\player.h" />
     <ClInclude Include="src\engine\global\functions.h" />
     <ClInclude Include="src\engine\global\instances.h" />
     <ClInclude Include="src\engine\input\InputManager.h" />

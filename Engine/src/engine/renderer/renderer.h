@@ -2,6 +2,7 @@
 #include <renderer/Shader.h>
 #include <array>
 #include <renderer/colors.h>
+#include "glm/glm.hpp"
 
 #define RENDERER_MAX_QUAD_COUNT 1024 * 1000
 #define RENDERER_MAX_VERTEX_COUNT RENDERER_MAX_QUAD_COUNT * 4
@@ -36,7 +37,7 @@ namespace Engine
 		void endFrame();
 		void drawQuad(float x, float y, float w, float h, float r, float g, float b, float a);
 		void drawQuad(float x, float y, float w, float h, Color c);
-
+		void drawQuad(glm::vec2 position, glm::vec2 size, Color c);
 		Shader& getBatchShader()
 		{
 			return batchShader;

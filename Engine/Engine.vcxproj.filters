@@ -42,7 +42,10 @@
     <ClCompile Include="src\engine\camera\camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\engine\ecs\entitymanager.cpp">
+    <ClCompile Include="src\engine\entities\entitymanager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\engine\entities\player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -77,16 +80,13 @@
     <ClInclude Include="src\game\sandbox.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\engine\ecs\entity.h">
+    <ClInclude Include="src\engine\entities\ientity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\engine\ecs\entitymanager.h">
+    <ClInclude Include="src\engine\entities\entitymanager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\engine\ecs\componentarray.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\engine\ecs\positionmanager.h">
+    <ClInclude Include="src\engine\entities\player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -8,5 +8,6 @@ namespace Engine
 		void initGLAD();
 		void setUpGL();
 		glm::vec2 getMousePos();
+		bool keyDown(int key);
 	}
 }

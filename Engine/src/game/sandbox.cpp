@@ -1,7 +1,10 @@
 #include "sandbox.h"
 #include <vector>
+#include "entities/player.h"
 using namespace std;
-using namespace Engine::Global;
+using namespace Engine;
+using namespace Global;
+
 namespace Game
 {
 	glm::vec2 player{0,0};
@@ -10,7 +13,8 @@ namespace Game
 	
 	Sandbox::Sandbox()
 	{
-		//camera->cameraMove = 0;
+		IEntity* p = new Player({ 0,0 }, { 100,100 }, Colors::BLUE);
+		entityManager->addEntity(p);
 	}
 
 	Sandbox::~Sandbox()
@@ -87,7 +91,6 @@ namespace Game
 
 	void Sandbox::render()
 	{
-		renderer->drawQuad(player.x, player.y, 150, 150, Engine::Colors::BLUE);
-		renderer->drawQuad(player2.x, player2.y, 150, 150, Engine::Colors::RED);
+
 	}
 }

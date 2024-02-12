@@ -14,6 +14,7 @@ namespace Engine
 		delete im;
 		delete renderer;
 		delete camera;
+		delete em;
 
 		delete game;
 	}
@@ -37,6 +38,9 @@ namespace Engine
 		camera->init(window->getWindowSize().x, window->getWindowSize().y);
 		Global::camera = &*camera;
 
+		em = new EntityManager();
+		Global::entityManager = em;
+
 		game = new Game::Sandbox();
 		glfwSwapInterval(1);
 	}
@@ -49,7 +53,7 @@ namespace Engine
 		{
 			window->close();
 		}
-
+		em->input();
 		game->input();
 	}
 
@@ -62,7 +66,7 @@ namespace Engine
 		GLint loc = renderer->getBatchShader().getUniformLocation("P");
 		glm::mat4 camMatrix = camera->getOrthoMatrix();
 		glUniformMatrix4fv(loc, 1, GL_FALSE, &(camMatrix[0][0]));
-
+		em->render();
 		game->render();
 
 		renderer->endFrame();
@@ -78,6 +82,7 @@ namespace Engine
 		camera->update(*im, dt);
 		
 		//window->setTitle(std::to_string(renderer->quadCount()));
+		em->update(dt);
 		game->update(dt);
 	}
 }

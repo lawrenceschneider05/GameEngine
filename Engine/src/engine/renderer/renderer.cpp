@@ -118,38 +118,11 @@ namespace Engine
 
 	void Renderer::drawQuad(float x, float y, float w, float h, Color color)
 	{
-		if (indexCount + 6 > RENDERER_MAX_INDEX_COUNT)
-		{
-			return;
-		}
-		//Bottom right
-		Vertex v0;
-		v0.Position = { x + w, y, 0.f };
-		v0.Color = { color.r,color.g,color.b,1.f };
-		vertices[vertexCount] = v0;
-		vertexCount++;
+		drawQuad(x, y, w, h, color.r, color.g, color.b, color.a);
+	}
 
-		//Top right
-		Vertex v1;
-		v1.Position = { x + w, y + h, 0.f };
-		v1.Color = { color.r,color.g,color.b,1.f };
-		vertices[vertexCount] = v1;
-		vertexCount++;
-
-		//Top left
-		Vertex v2;
-		v2.Position = { x, y + h, 0.f };
-		v2.Color = { color.r,color.g,color.b,1.f };
-		vertices[vertexCount] = v2;
-		vertexCount++;
-
-		//Bottom left
-		Vertex v3;
-		v3.Position = { x, y, 0.f };
-		v3.Color = { color.r,color.g,color.b,1.f };
-		vertices[vertexCount] = v3;
-		vertexCount++;
-
-		indexCount += 6;
+	void Renderer::drawQuad(glm::vec2 position, glm::vec2 size, Color c)
+	{
+		drawQuad(position.x, position.y, size.x, size.y, c);
 	}
 }

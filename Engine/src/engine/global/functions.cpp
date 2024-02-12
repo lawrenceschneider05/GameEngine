@@ -36,5 +36,10 @@ namespace Engine
 		{
 			return camera->convertScreenToWorldCoordinates(inputManager->getMousePos());
 		}
+
+		bool keyDown(int key)
+		{
+			return inputManager->keyDown(key);
+		}
 	}
 }
