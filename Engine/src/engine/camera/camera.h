@@ -8,7 +8,7 @@ namespace Engine
 	{
 	public:
 		bool cameraMove = true;
-		Camera() : position(0.0f, 0.0f), cameraMatrix(1.0f), scale(1.0f)
+		Camera() : position(-250.0f, -250.0f), cameraMatrix(1.0f), scale(1.0f)
 		{
 
 		}
@@ -49,13 +49,12 @@ namespace Engine
 				}
 				if (input.keyDown(KEY_SPACE))
 				{
-
 					scale -= 2.5f * dt;
 					if (scale < 0)
 					{
 						scale = 0;
 					}
-
+					
 				}
 				else if (input.keyDown(KEY_LEFT_SHIFT))
 				{

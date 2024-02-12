@@ -1,14 +1,16 @@
 #include "sandbox.h"
 #include <vector>
 using namespace std;
+using namespace Engine::Global;
 namespace Game
 {
 	glm::vec2 player{0,0};
+	glm::vec2 player2{ 100,100 };
 	bool up = 0, down = 0, left = 0, right = 0;
 	
 	Sandbox::Sandbox()
 	{
-		camera->cameraMove = 0;
+		//camera->cameraMove = 0;
 	}
 
 	Sandbox::~Sandbox()
@@ -18,12 +20,12 @@ namespace Game
 
 	void Sandbox::input()
 	{
-		if (inputManager->keyDown(KEY_W))
+		if (inputManager->keyDown(KEY_UP))
 		{
 			up = true;
 			down = false;
 		}
-		else if (inputManager->keyDown(KEY_S))
+		else if (inputManager->keyDown(KEY_DOWN))
 		{
 			down = true;
 			up = false;
@@ -33,12 +35,12 @@ namespace Game
 			down = false;
 			up = false;
 		}
-		if (inputManager->keyDown(KEY_A))
+		if (inputManager->keyDown(KEY_LEFT))
 		{
 			left = true;
 			right = false;
 		}
-		else if (inputManager->keyDown(KEY_D))
+		else if (inputManager->keyDown(KEY_RIGHT))
 		{
 			right = true;
 			left = false;
@@ -80,10 +82,12 @@ namespace Game
 				player.x += 500 * dt;
 			}
 		}
+		player2 = camera->convertScreenToWorldCoordinates(inputManager->getMousePos());
 	}
 
 	void Sandbox::render()
 	{
-		renderer->drawQuad(player.x, player.y, 150, 150, Engine::Colors::RED);
+		renderer->drawQuad(player.x, player.y, 150, 150, Engine::Colors::BLUE);
+		renderer->drawQuad(player2.x, player2.y, 150, 150, Engine::Colors::RED);
 	}
 }
