@@ -4,7 +4,6 @@
 #include <input/InputManager.h>
 #include <renderer/renderer.h>
 #include <camera/camera.h>
-#include <entities/entitymanager.h>
 
 namespace Engine
 {
@@ -14,6 +13,5 @@ namespace Engine
 		inline InputManager* inputManager;
 		inline Renderer* renderer;
 		inline Camera* camera;
-		inline EntityManager* entityManager;
 	}
 }

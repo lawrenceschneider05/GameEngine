@@ -38,7 +38,6 @@ namespace Engine
 		InputManager* im;
 		Renderer* renderer;
 		Camera* camera;
-		EntityManager* em;
 
 		Game::Sandbox* game;
 		

@@ -42,15 +42,6 @@
     <ClCompile Include="src\engine\camera\camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\engine\entities\entitymanager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\engine\entities\player.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\engine\entities\wall.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\engine\window\window.h">
@@ -83,22 +74,10 @@
     <ClInclude Include="src\game\sandbox.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\engine\entities\ientity.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\engine\entities\entitymanager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\engine\entities\player.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\engine\collision\Collision.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\engine\collision\collisionmanager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\engine\entities\entitytypes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\engine\collision\CollisionFinder.h">
@@ -107,7 +86,7 @@
     <ClInclude Include="src\engine\collision\Quad.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\engine\entities\wall.h">
+    <ClInclude Include="src\engine\entities\entity_manager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
