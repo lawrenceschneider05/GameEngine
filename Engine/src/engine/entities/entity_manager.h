@@ -1,11 +1,10 @@
 #pragma once
 #include <queue>
 #include <iostream>
+#include "entities.h"
+
 namespace Engine
 {
-	using EntityID = long unsigned int;
-	const long unsigned int MAX_ENTITIES = 10;
-
 	class EntityManager
 	{
 	public:
@@ -53,6 +52,7 @@ namespace Engine
 				std::cout << "EntityManager: tried to destroy non-existent entity.\n";
 			}
 		}
+
 	private:
 		std::queue<EntityID> available_entity_ids{};
 		std::vector<EntityID> entity_ids{};

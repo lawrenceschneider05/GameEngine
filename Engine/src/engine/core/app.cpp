@@ -1,6 +1,7 @@
 #include "app.h"
 #include "GLFW/glfw3.h"
 #include <entities/entity_manager.h>
+#include <entities/component_manager.h>
 
 namespace Engine
 {
@@ -41,14 +42,21 @@ namespace Engine
 		game = new Game::Sandbox();
 		glfwSwapInterval(1);
 
-		//EntityManager em = EntityManager();
+		EntityManager em = EntityManager();
 
-		//for (int i = 0; i < 10; i++)
-		//{
-		//	std::cout << em.createEntity() << "\n";
-		//}
-		//em.destroyEntity(9);
-		//std::cout << em.createEntity() << "\n";
+		for (int i = 0; i < 10; i++)
+		{
+			std::cout << em.createEntity() << "\n";
+		}
+		em.destroyEntity(9);
+		std::cout << em.createEntity() << "\n";
+
+		ComponentManager* cm = new ComponentManager();
+		cm->addTransform(0, new Transform({ {0,0},{1,1} }));
+		
+		cm->removeTransform(0);
+		std::cout << cm->getTransform(0)->size.x << "\n";
+		delete cm;
 	}
 
 	void App::input()
