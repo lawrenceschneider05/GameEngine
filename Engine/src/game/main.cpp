@@ -13,17 +13,17 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 {
 	if (action == GLFW_PRESS)
 	{
-		Global::inputManager->keyPressed(key);
+		Global::input_manager->keyPressed(key);
 	}
 	else if (action == GLFW_RELEASE)
 	{
-		Global::inputManager->keyReleased(key);
+		Global::input_manager->keyReleased(key);
 	}
 }
 
 void cursor_position_callback(GLFWwindow* window, double xpos, double ypos)
 {
-	Global::inputManager->mouseMoved(xpos, ypos);
+	Global::input_manager->mouseMoved(xpos, ypos);
 }
 
 void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
@@ -32,20 +32,20 @@ void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
 	{
 		if (action == GLFW_PRESS)
 		{
-			Global::inputManager->leftMousePressed();
+			Global::input_manager->leftMousePressed();
 		}
 		else {
-			Global::inputManager->leftMouseReleased();
+			Global::input_manager->leftMouseReleased();
 		}
 	}
 	if (button == GLFW_MOUSE_BUTTON_RIGHT)
 	{
 		if (action == GLFW_PRESS)
 		{
-			Global::inputManager->rightMousePressed();
+			Global::input_manager->rightMousePressed();
 		}
 		else {
-			Global::inputManager->rightMouseReleased();
+			Global::input_manager->rightMouseReleased();
 		}
 	}
 }

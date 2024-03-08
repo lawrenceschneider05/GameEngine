@@ -6,25 +6,25 @@
 
 namespace Engine
 {
-	class ComponentManager
+	class ComponentArray
 	{
 	public:
-		ComponentManager()
+		ComponentArray(ComponentType type)
 		{
-
+			this->component_type = type;
 		}
-		~ComponentManager()
+		~ComponentArray()
 		{
-			for (Transform* t : transform_array)
+			for (Component* t : component_array)
 			{
 				delete t;
 			}
 		}
-		void addTransform(EntityID id, Transform* t)
+		void addComponent(EntityID id, Component* c)
 		{
 			try
 			{
-				if (id < 0 || id > MAX_ENTITIES)
+				if (id < 0 || id > MAX_ENTITIES || c->getComponentType() != component_type)
 				{
 					throw;
 				}
@@ -33,14 +33,14 @@ namespace Engine
 			{
 				std::cout << "ComponentManager: tried to add a component to an invalid entity\n";
 			}
-			transform_array[id] = t;
+			component_array[id] = c;
 		}
 
-		Transform* getTransform(EntityID id)
+		Component* getComponent(EntityID id)
 		{
 			try
 			{
-				if (id < 0 || id > MAX_ENTITIES || transform_array[id] == NULL)
+				if (id < 0 || id > MAX_ENTITIES || component_array[id] == NULL)
 				{
 					throw;
 				}
@@ -50,10 +50,10 @@ namespace Engine
 			{
 				std::cout << "ComponentManager: tried to get a component from an invalid entity\n";
 			}
-			return transform_array[id];
+			return component_array[id];
 		}
 
-		void removeTransform(EntityID id)
+		void removeComponent(EntityID id)
 		{
 			try
 			{
@@ -67,11 +67,12 @@ namespace Engine
 			{
 				std::cout << "ComponentManager: tried to remove a component from an invalid entity\n";
 			}
-			delete transform_array[id];
-			transform_array[id] = 0;
+			delete component_array[id];
+			component_array[id] = 0;
 		}
 		
 	private:
-		std::array<Transform*, MAX_ENTITIES> transform_array{};
+		std::array<Component*, MAX_ENTITIES> component_array{};
+		ComponentType component_type;
 	};
 }

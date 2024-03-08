@@ -1,4 +1,5 @@
 #include "renderer.h"
+#include <components/transform_component.h>
 namespace Engine
 {
 	Renderer::Renderer()
@@ -124,5 +125,9 @@ namespace Engine
 	void Renderer::drawQuad(glm::vec2 position, glm::vec2 size, Color c)
 	{
 		drawQuad(position.x, position.y, size.x, size.y, c);
+	}
+	void Renderer::drawQuad(TransformComponent transform, Color c)
+	{
+		drawQuad(transform.position, transform.size, c);
 	}
 }

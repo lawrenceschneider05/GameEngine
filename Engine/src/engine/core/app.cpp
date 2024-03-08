@@ -1,7 +1,8 @@
 #include "app.h"
 #include "GLFW/glfw3.h"
 #include <entities/entity_manager.h>
-#include <entities/component_manager.h>
+#include <components/transform_component.h>
+#include <components/entity_type_component.h>
 
 namespace Engine
 {
@@ -16,7 +17,8 @@ namespace Engine
 		delete im;
 		delete renderer;
 		delete camera;
-
+		delete entity_manager;
+		delete component_manager;
 		delete game;
 	}
 	void App::init()
@@ -26,7 +28,7 @@ namespace Engine
 		window->init();
 
 		im = new InputManager(window);
-		Global::inputManager = &*im;
+		Global::input_manager = &*im;
 
 		Global::initGLAD();
 		Global::setUpGL();
@@ -39,24 +41,18 @@ namespace Engine
 		camera->init(window->getWindowSize().x, window->getWindowSize().y);
 		Global::camera = &*camera;
 
+		em = new EntityManager();
+		Global::entity_manager = &*em;
+
+		cm = new ComponentManager();
+		Global::component_manager = &*cm;
+		cm->registerComponentArray(TRANSFORM_COMPONENT);
+		cm->registerComponentArray(ENTITY_TYPE_COMPONENT);
+
 		game = new Game::Sandbox();
 		glfwSwapInterval(1);
 
-		EntityManager em = EntityManager();
-
-		for (int i = 0; i < 10; i++)
-		{
-			std::cout << em.createEntity() << "\n";
-		}
-		em.destroyEntity(9);
-		std::cout << em.createEntity() << "\n";
-
-		ComponentManager* cm = new ComponentManager();
-		cm->addTransform(0, new Transform({ {0,0},{1,1} }));
 		
-		cm->removeTransform(0);
-		std::cout << cm->getTransform(0)->size.x << "\n";
-		delete cm;
 	}
 
 	void App::input()
@@ -85,6 +81,7 @@ namespace Engine
 		renderer->endFrame();
 
 		window->swapBuffers();
+		
 	}
 
 	void App::update(long double dt)

@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vendor/include/glm/fwd.hpp>
 #include "instances.h"
+#include <input/InputManager.h>
 
 namespace Engine
 {
@@ -34,12 +35,12 @@ namespace Engine
 
 		glm::vec2 getMousePos()
 		{
-			return camera->convertScreenToWorldCoordinates(inputManager->getMousePos());
+			return camera->convertScreenToWorldCoordinates(input_manager->getMousePos());
 		}
 
 		bool keyDown(int key)
 		{
-			return inputManager->keyDown(key);
+			return input_manager->keyDown(key);
 		}
 	}
 }

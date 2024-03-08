@@ -2,6 +2,8 @@
 #include "global/instances.h"
 #include "global/functions.h"
 #include <src/game/sandbox.h>
+#include <components/component_manager.h>
+#include <entities/entity_manager.h>
 
 namespace Engine
 {
@@ -38,6 +40,8 @@ namespace Engine
 		InputManager* im;
 		Renderer* renderer;
 		Camera* camera;
+		EntityManager* em;
+		ComponentManager* cm;
 
 		Game::Sandbox* game;
 		
