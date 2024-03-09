@@ -3,12 +3,11 @@
 #include <array>
 #include <renderer/colors.h>
 #include "glm/glm.hpp"
-#include <components/transform_component.h>
+#include <ecs/components/transform_component.h>
 
 #define RENDERER_MAX_QUAD_COUNT 1024 * 1000
 #define RENDERER_MAX_VERTEX_COUNT RENDERER_MAX_QUAD_COUNT * 4
 #define RENDERER_MAX_INDEX_COUNT RENDERER_MAX_QUAD_COUNT * 6
-
 
 namespace Engine
 {

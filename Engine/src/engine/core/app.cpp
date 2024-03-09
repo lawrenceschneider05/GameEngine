@@ -1,8 +1,8 @@
 #include "app.h"
 #include "GLFW/glfw3.h"
-#include <entities/entity_manager.h>
-#include <components/transform_component.h>
-#include <components/entity_type_component.h>
+#include <ecs/entities/entity_manager.h>
+#include <ecs/components/transform_component.h>
+#include <ecs/components/entity_type_component.h>
 
 namespace Engine
 {
@@ -17,9 +17,8 @@ namespace Engine
 		delete im;
 		delete renderer;
 		delete camera;
-		delete entity_manager;
-		delete component_manager;
 		delete game;
+		delete ecs;
 	}
 	void App::init()
 	{
@@ -40,22 +39,17 @@ namespace Engine
 		camera = new Camera();
 		camera->init(window->getWindowSize().x, window->getWindowSize().y);
 		Global::camera = &*camera;
+		
 
-		em = new EntityManager();
-		Global::entity_manager = &*em;
-
-		cm = new ComponentManager();
-		Global::component_manager = &*cm;
-		cm->registerComponentArray(TRANSFORM_COMPONENT);
-		cm->registerComponentArray(ENTITY_TYPE_COMPONENT);
+		ecs = new ECS(renderer);
+		Global::ecs = ecs;
+		
 
 		game = new Game::Sandbox();
 		glfwSwapInterval(1);
-
-		
 	}
 
-	void App::input()
+	void App::input(long double dt)
 	{
 		glfwPollEvents();
 
@@ -67,7 +61,7 @@ namespace Engine
 		game->input();
 	}
 
-	void App::render()
+	void App::render(long double dt)
 	{
 		window->clear(0.2125f, 0.4356f, 0.85f, 1.f);
 
@@ -76,8 +70,8 @@ namespace Engine
 		GLint loc = renderer->getBatchShader().getUniformLocation("P");
 		glm::mat4 camMatrix = camera->getOrthoMatrix();
 		glUniformMatrix4fv(loc, 1, GL_FALSE, &(camMatrix[0][0]));
+		ecs->run(dt);
 		game->render();
-
 		renderer->endFrame();
 
 		window->swapBuffers();

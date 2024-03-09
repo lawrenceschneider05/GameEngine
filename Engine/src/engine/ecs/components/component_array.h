@@ -1,6 +1,6 @@
 #pragma once
 #include <array>
-#include <entities/entities.h>
+#include <ecs/entities/entities.h>
 #include "transform_component.h"
 #include <iostream>
 
@@ -15,10 +15,15 @@ namespace Engine
 		}
 		~ComponentArray()
 		{
-			for (Component* t : component_array)
-			{
-				delete t;
-			}
+			// CATCHES AN EXCEPTION
+			//for (EntityID e = 0; e < comp_array.size(); e++)
+			//{
+			//	if (comp_array[e] != NULL)
+			//	{
+			//		delete comp_array[e];
+			//	}
+
+			//}
 		}
 		void addComponent(EntityID id, Component* c)
 		{
@@ -33,14 +38,14 @@ namespace Engine
 			{
 				std::cout << "ComponentManager: tried to add a component to an invalid entity\n";
 			}
-			component_array[id] = c;
+			comp_array[id] = c;
 		}
 
 		Component* getComponent(EntityID id)
 		{
 			try
 			{
-				if (id < 0 || id > MAX_ENTITIES || component_array[id] == NULL)
+				if (id < 0 || id > MAX_ENTITIES || comp_array[id] == NULL)
 				{
 					throw;
 				}
@@ -50,7 +55,7 @@ namespace Engine
 			{
 				std::cout << "ComponentManager: tried to get a component from an invalid entity\n";
 			}
-			return component_array[id];
+			return comp_array[id];
 		}
 
 		void removeComponent(EntityID id)
@@ -67,12 +72,14 @@ namespace Engine
 			{
 				std::cout << "ComponentManager: tried to remove a component from an invalid entity\n";
 			}
-			delete component_array[id];
-			component_array[id] = 0;
+			delete comp_array[id];
+			comp_array[id] = 0;
 		}
+
+		std::array<Component*, MAX_ENTITIES>* getComponentArray() { return &comp_array; }
 		
 	private:
-		std::array<Component*, MAX_ENTITIES> component_array{};
+		std::array<Component*, MAX_ENTITIES> comp_array{};
 		ComponentType component_type;
 	};
 }

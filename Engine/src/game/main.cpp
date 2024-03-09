@@ -82,7 +82,7 @@ int main(int argc, char** argv)
 	{
 		frameStart = glfwGetTime();
 
-		app->input();
+		app->input(dt);
 
 		app->update(dt);
 
@@ -90,7 +90,7 @@ int main(int argc, char** argv)
 		{
 			//std::cout << (glfwGetTime() - lastRender) << "\n";
 			app->getWindow().setTitle(std::to_string((1.0f / (glfwGetTime() - lastRender))));
-			app->render();
+			app->render(dt);
 
 			
 			

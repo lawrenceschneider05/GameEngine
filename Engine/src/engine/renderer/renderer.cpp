@@ -1,5 +1,5 @@
 #include "renderer.h"
-#include <components/transform_component.h>
+#include <ecs/components/transform_component.h>
 namespace Engine
 {
 	Renderer::Renderer()

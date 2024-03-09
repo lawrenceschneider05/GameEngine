@@ -24,6 +24,11 @@ namespace Engine
 		{
 			component_array_map.at(c->getComponentType()).addComponent(id, c);
 		}
+
+		ComponentArray* getComponentArray(ComponentType type)
+		{
+			return &component_array_map.at(type);
+		}
 	private:
 		std::map<ComponentType, ComponentArray> component_array_map;
 	};
