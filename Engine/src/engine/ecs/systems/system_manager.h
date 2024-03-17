@@ -8,10 +8,7 @@ namespace Engine
 	public:
 		~SystemManager()
 		{
-			for (ISystem* s : system_array)
-			{
-				delete s;
-			}
+
 		}
 		void registerSystem(ISystem* s)
 		{

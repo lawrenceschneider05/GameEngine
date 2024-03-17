@@ -4,6 +4,8 @@
 #include <ecs/components/component_manager.h>
 #include <ecs/systems/system_manager.h>
 #include <ecs/systems/render_system.h>
+#include <ecs/systems/physics_system.h>
+#include <ecs/systems/transform_system.h>
 
 namespace Engine
 {
@@ -17,13 +19,16 @@ namespace Engine
 			sm = new SystemManager();
 
 			cm->registerComponentArray(TRANSFORM_COMPONENT);
+			cm->registerComponentArray(PHYSICS_COMPONENT);
 			sm->registerSystem(new RenderSystem(cm->getComponentArray(TRANSFORM_COMPONENT), renderer));
+			sm->registerSystem(new TransformSystem(cm->getComponentArray(TRANSFORM_COMPONENT), cm->getComponentArray(PHYSICS_COMPONENT)));
+			sm->registerSystem(new PhysicsSystem(cm->getComponentArray(PHYSICS_COMPONENT)));
 		}
 		~ECS()
 		{
 			delete em;
 			delete cm;
-			delete sm;
+			//delete sm;
 		}
 
 		EntityID createEntity()
@@ -38,7 +43,10 @@ namespace Engine
 		{
 			cm->addComponent(id, c);
 		}
-
+		Component* getComponent(EntityID id, ComponentType t)
+		{
+			return cm->getComponent(id, t);
+		}
 		void run(long double dt)
 		{
 			sm->run(dt);

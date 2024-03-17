@@ -43,6 +43,5 @@ namespace Engine
 		ECS* ecs;
 
 		Game::Sandbox* game;
-		
 	};
 }

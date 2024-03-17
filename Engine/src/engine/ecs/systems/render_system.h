@@ -12,11 +12,6 @@ namespace Engine
 			this->comp_array = comp_array;
 			this->renderer = renderer;
 		}
-		~RenderSystem() override
-		{
-			// calls an exception
-			//delete comp_array;
-		}
 
 		void run(long double dt) override
 		{
@@ -24,6 +19,7 @@ namespace Engine
 			{
 				if (*it != NULL)
 				{
+					std::cout << ((TransformComponent*)*it)->position.x << "b\n";
 					renderer->drawQuad(*(TransformComponent*)*it, Colors::RED);
 				}
 			}

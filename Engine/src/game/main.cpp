@@ -88,11 +88,8 @@ int main(int argc, char** argv)
 
 		if ((glfwGetTime() - lastRender > 1 / FPS))
 		{
-			//std::cout << (glfwGetTime() - lastRender) << "\n";
 			app->getWindow().setTitle(std::to_string((1.0f / (glfwGetTime() - lastRender))));
-			app->render(dt);
-
-			
+			app->render((glfwGetTime() - lastRender));
 			
 			lastRender = glfwGetTime();
 			

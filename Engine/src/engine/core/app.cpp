@@ -71,6 +71,7 @@ namespace Engine
 		glm::mat4 camMatrix = camera->getOrthoMatrix();
 		glUniformMatrix4fv(loc, 1, GL_FALSE, &(camMatrix[0][0]));
 		ecs->run(dt);
+		//std::cout << "app dt: " << 1 / dt << "\n";
 		game->render();
 		renderer->endFrame();
 

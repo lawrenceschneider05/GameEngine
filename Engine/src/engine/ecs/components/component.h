@@ -5,7 +5,7 @@ namespace Engine
 	{
 		TRANSFORM_COMPONENT = 0,
 		ENTITY_TYPE_COMPONENT = 1,
-		SCRIPT_COMPONENT = 2
+		PHYSICS_COMPONENT = 2
 	};
 	struct Component
 	{
